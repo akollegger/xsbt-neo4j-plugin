@@ -1,0 +1,4 @@
+# check if the file gets created
+$ touch target/noop.txt
+$ exists target/noop.txt
+
