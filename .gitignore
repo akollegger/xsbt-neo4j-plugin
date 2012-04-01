@@ -2,5 +2,4 @@ target/
 lib_managed/
 project/boot/
 project/build/target/
-neo4j/
 .idea*
