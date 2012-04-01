@@ -1,4 +1,4 @@
-name := "xsbt-neo4j"
+name := "xsbt-neo4j-plugin"
 
 organization := "org.neo4j.tools"
 
@@ -8,23 +8,22 @@ scalaVersion := "2.9.1"
 
 sbtPlugin := true
 
+publishTo <<= (version) { version: String =>
+      Some(Resolver.file("file", new File("/Users/akollegger/Developer/akollegger/mvn-repo") / {
+        if  (version.trim.endsWith("SNAPSHOT"))  "snapshots/"
+        else                                     "releases/" }    )
+        (Patterns(true, Resolver.mavenStyleBasePattern))
+        )
+}
+
+publishMavenStyle := true
+
 libraryDependencies ~= { seq =>
-  val disVers = "0.8.7"
   seq ++ Seq(
-    "org.specs2" %% "specs2" % "1.8.2" % "test",
-    "net.databinder" %% "dispatch-core" % disVers,
-    "net.databinder" %% "dispatch-oauth" % disVers,
-    "net.databinder" %% "dispatch-nio" % disVers,
-    /* Twine doesn't need the below dependencies, but it simplifies
-     * the Dispatch tutorials to keep it here for now. */
-    "net.databinder" %% "dispatch-http" % disVers,
-    "net.databinder" %% "dispatch-tagsoup" % disVers,
-    "net.databinder" %% "dispatch-jsoup" % disVers
+    "org.specs2" %% "specs2" % "1.8.2" % "test"
   )
 }
 
-
 initialCommands := "import org.neo4j.tools.xsbt._"
 
-seq(ScriptedPlugin.scriptedSettings: _*)
 
