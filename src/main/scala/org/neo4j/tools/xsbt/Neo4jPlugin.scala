@@ -9,7 +9,7 @@ object Neo4jPlugin extends Plugin {
 
   override lazy val settings = Seq(commands += neo4jCommand,
     neo4jVersion := "1.6.1",
-    neo4jHome := "neo4j"
+    neo4jHome := "neo4j_home"
   )
 
   val neo4jVersion = SettingKey[String]("neo4j-version")
@@ -49,7 +49,7 @@ object Neo4jPlugin extends Plugin {
     args match {
       case ("install") => installNeo4j ( fullyQualifiedNeo4j,  specifiedNeo4jHome )
       case (cmd:String) => ctrlNeo4j( fullyQualifiedNeo4j, specifiedNeo4jHome, cmd )
-      case _ => println("What would *you* do with: " + args + "?")
+      case _ => println("Je ne grok pas: " + args)
     }
     state
   }
@@ -82,7 +82,7 @@ object Neo4jPlugin extends Plugin {
   }
 
   def ctrlNeo4j(fullyQualifiedNeo4j:String, home:File, command:String ) {
-    Process("neo4j" :: command :: Nil, home/fullyQualifiedNeo4j/"bin") !
+    Process("bin/neo4j" :: command :: Nil, home/fullyQualifiedNeo4j) !
   }
 
 }

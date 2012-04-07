@@ -15,7 +15,7 @@ These are awfully narrow requirements. Sorry about that. Broader applicability c
 Installation
 ------------
 
-Add the following lines to 
+Add the following lines to `project/build.sbt`
 
   resolvers += "Kollegger Maven Repository" at "https://github.com/akollegger/mvn-repo/raw/master/snapshots/"
 
