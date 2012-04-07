@@ -2,7 +2,7 @@ name := "xsbt-neo4j-plugin"
 
 organization := "org.neo4j.tools"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 scalaVersion := "2.9.1"
 
